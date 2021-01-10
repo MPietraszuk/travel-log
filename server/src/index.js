@@ -7,10 +7,13 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 
 const middlewares = require('./middlewares');
+const logs = require('./api/logs');
 
 const app = express();
 
-mongoose.connect(process.env.DATABASE_URL, {
+const myDB = `mongodb+srv://${process.env.MY_USER}:${process.env.MY_PASSWORD}@tlcluster.zsw3v.mongodb.net/${process.env.MY_DB}?retryWrites=true&w=majority`;
+
+mongoose.connect(myDB, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -18,17 +21,19 @@ mongoose.connect(process.env.DATABASE_URL, {
 app.use(morgan('common'));
 app.use(helmet());
 app.use(cors({
-  origin: 'http://localhost:3000',
+  origin: process.env.CORS_ORIGIN,
 }));
+
+app.use(express.json());
 
 app.get('/', (req, res) => {
   res.json({
     message: 'Hello World!',
   });
 });
+app.use('/api/logs', logs);
 
 app.use(middlewares.notFound);
-
 app.use(middlewares.errorHandler);
 
 const port = process.env.PORT || 1337;
