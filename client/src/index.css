@@ -7,7 +7,11 @@ body {
     width: 100vw;
     overflow: hidden;
 }
-
+h3,
+p {
+    padding: 0;
+    margin: 0 0 0.5rem 0;
+}
 .marker {
     transform: translate(-50%, -100%);
 }
@@ -25,8 +29,8 @@ body {
 }
 
 .popup {
-    width: 40vw;
-    padding: 1rem;
+    width: 50vw;
+    padding: 0.5rem;
 }
 
 .popup img {
