@@ -19,7 +19,7 @@
   "env": {
     "NODE_ENV": "production",
     "PORT": "1337",
-    "DATABASE_URL": "@travel-log-db-production-ye7g",
+    "TRAVEL_LOG_DB": "@travel-log-db-production-ye7g",
     "CORS_ORIGIN": "https://travel-log.mpietraszuk.vercel.app/",
     "TRAVEL_LOG_API_KEY": "@travel-log-api-key"
   }
